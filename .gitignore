@@ -1,0 +1,42 @@
+*.class
+
+# Package Files #
+*.war
+*.ear
+
+work/
+/data/
+logs/
+.DS_Store
+.rbenv-version
+build/
+target/
+data/
+
+## ingore deployment folders
+deploy/
+dist/
+
+## eclipse ignores
+.project
+.classpath
+.settings
+*/.project
+*/.classpath
+*/.settings
+*/.springBeans
+*/eclipse-build
+
+## IntelliJ ignore
+.idea/
+*.iml
+
+## netbeans ignores
+nb-configuration.xml
+nbactions.xml
+
+# gradle cache ignores
+.gradle/
+
+*.ipr
+*.iws

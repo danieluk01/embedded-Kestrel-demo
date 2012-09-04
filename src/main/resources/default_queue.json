@@ -1,0 +1,4 @@
+{
+	"defaultQueueName":"myqueue",
+	"defaultQueuePath":"./data"
+}
