@@ -49,10 +49,12 @@ public class QueueManager {
 	}
 
 	private static void initDefaultQueue() {
-		QueueConfig config = new QueueBuilder().apply();
 		
-		//don't use the customized config as not working yet
-//		QueueConfig config = getConfig();
+		//kestrel default settings
+//		QueueConfig config = new QueueBuilder().apply();
+		
+		//customized kestrel settings
+		QueueConfig config = getConfig();
 		
 		Timer timer = new JavaTimer();
 		ScheduledExecutorService journalSyncScheduler = Executors.newScheduledThreadPool(10);
@@ -92,17 +94,21 @@ public class QueueManager {
 		int maxItems = 10000;
 		StorageUnit maxSize = new StorageUnit(1024*10000);
 		StorageUnit maxItemSize = new StorageUnit(1024*100);
-		Duration maxAge = new Duration(1000*1000);	
+		
+		//10 seconds
+		Duration maxAge = new Duration(10*1000*1000*1000);	
 		StorageUnit defaultJournalSize = new StorageUnit(1024*5000);
 		StorageUnit maxMemorySize = new StorageUnit(1024*10000);
 		StorageUnit maxJournalSize = new StorageUnit(1024*10000);
 		Boolean discardOldWhenFull = true;
 		Boolean keepJournal = true;
-		Duration syncJournal = new Duration(3*1000*1000);
+		
+		//3 seconds
+		Duration syncJournal = new Duration(3*1000*1000*1000);
 		String expireToQueue = null;
 		int maxExpireSweep = 5000;
 		Boolean fanoutOnly = false;
-		Duration maxQueueAge = new Duration(Long.MAX_VALUE);
+		Duration maxQueueAge = null;
 			
 		QueueConfig config = new QueueConfig(maxItems, 
 												maxSize, 
